@@ -1,0 +1,74 @@
+  rules_version = '2';
+  service cloud.firestore {
+    match /databases/{database}/documents {
+
+      function isAuth() {
+        return request.auth != null;
+      }
+
+      function isOwner(uid) {
+        return request.auth.uid == uid;
+      }
+
+      function isFaculty() {
+        return isAuth() &&
+          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role ==
+  'faculty';
+      }
+
+      function notChangingRestrictedUserFields() {
+        return !request.resource.data.diff(resource.data).affectedKeys()
+          .hasAny(['role', 'isDisabled', 'disabledReason', 'disabledAt']);
+      }
+
+      function notChangingAdminOnlyIssueFields() {
+        return !request.resource.data.diff(resource.data).affectedKeys()
+          .hasAny(['status', 'priority', 'assignedDepartment', 'isOfficial',
+  'resolution', 'timeline']);
+      }
+
+      match /users/{userId} {
+        allow read: if isAuth();
+        allow create: if isOwner(userId)
+          && (!('role' in request.resource.data) || request.resource.data.role ==
+  'student')
+          && !('isDisabled' in request.resource.data)
+          && !('disabledReason' in request.resource.data)
+          && !('disabledAt' in request.resource.data);
+        allow update: if (isOwner(userId) && notChangingRestrictedUserFields()) ||
+  isFaculty();
+        allow delete: if isOwner(userId) || isFaculty();
+      }
+
+      match /usernames/{username} {
+        allow read: if isAuth();
+        allow create: if isAuth() && request.resource.data.uid == request.auth.uid;
+        allow delete: if isAuth() && resource.data.uid == request.auth.uid;
+      }
+
+      match /issues/{issueId} {
+        allow read: if isAuth();
+        allow create: if isAuth() && request.resource.data.authorId ==
+  request.auth.uid;
+        allow update: if isAuth() && (isFaculty() ||
+  notChangingAdminOnlyIssueFields());
+        allow delete: if isFaculty();
+      }
+
+      match /comments/{commentId} {
+        allow read: if isAuth();
+        allow create: if isAuth();
+        allow update: if isAuth() && (resource.data.authorId == request.auth.uid ||
+  isFaculty());
+        allow delete: if isAuth() && (resource.data.authorId == request.auth.uid ||
+  isFaculty());
+      }
+
+      match /notifications/{notificationId} {
+        allow read: if isAuth() && resource.data.userId == request.auth.uid;
+        allow create: if isAuth();
+        allow update: if isAuth() && resource.data.userId == request.auth.uid;
+        allow delete: if isAuth() && resource.data.userId == request.auth.uid;
+      }
+    }
+  }
