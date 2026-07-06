@@ -101,13 +101,13 @@ This project is developed for academic and educational purposes.
 CampusVoice
 Giving students a platform where their voices matter. 
 
-## Other supporting websites (Still in devlopment) - 
 
-#NoteHall: 
-Github Repository - https://github.com/hiral17234/NoteHall
-Live Link : https://notehall.vercel.app/
+# 👩‍💻 Developer
 
-## 👩‍💻 Developed by
+**Hiral Goyal**
 
-Hiral Goyal
+B.Tech Mathematics & Computing
+
+Madhav Institute of Technology & Science (MITS), Gwalior
+
 
