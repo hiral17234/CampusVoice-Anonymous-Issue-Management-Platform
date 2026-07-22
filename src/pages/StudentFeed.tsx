@@ -33,6 +33,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Menu,
+  Code2,
 } from 'lucide-react';
 import campusVoiceLogo from '@/assets/campusvoice-logo.png';
 import { EmptyState } from '@/components/EmptyState';
@@ -448,6 +449,24 @@ export default function StudentFeed() {
                 </div>
               </CardContent>
             </Card>
+            
+            <Card className="glass-card">
+  <CardContent className="p-4">
+    <h3 className="font-semibold mb-3 flex items-center gap-2">
+      <Code2 className="h-4 w-4 text-primary" />
+      Developer
+    </h3>
+
+    <Button
+      variant="outline"
+      className="w-full justify-start"
+      onClick={() => navigate("/developer")}
+    >
+      <Code2 className="h-4 w-4 mr-2" />
+      Developer Hub
+    </Button>
+  </CardContent>
+</Card>
           </aside>
 
           {/* Main Feed */}
