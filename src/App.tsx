@@ -20,6 +20,7 @@ import NotFound from "./pages/NotFound";
 import { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "./lib/firebase";
+import Developer from "./pages/Developer";
 
 const queryClient = new QueryClient();
 
@@ -154,8 +155,19 @@ function AppRoutes() {
           </ProtectedRoute>
         } 
       />
+
+      <Route
+  path="/developer"
+  element={
+    <ProtectedRoute>
+      <Developer />
+    </ProtectedRoute>
+  }
+/>
       <Route path="/suspended" element={<AccountSuspended />} />
       <Route path="*" element={<NotFound />} />
+
+      
     </Routes>
   );
 }
