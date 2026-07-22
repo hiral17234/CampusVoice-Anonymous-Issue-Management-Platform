@@ -1,174 +1,129 @@
 import { motion } from "framer-motion";
 import {
   Github,
-  BookOpen,
-  FileText,
-  Code2,
-  Rocket,
-  BadgeCheck,
+  Linkedin,
+  Mail,
+  MapPin,
+  GraduationCap,
 } from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 export default function Developer() {
   return (
     <div className="min-h-screen bg-background">
-
-      {/* Header */}
-      <div className="border-b bg-card/70 backdrop-blur-lg">
-        <div className="container mx-auto px-6 py-5 flex items-center justify-between">
-
-          <div className="flex items-center gap-3">
-
-            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-              <Code2 className="w-6 h-6 text-primary" />
-            </div>
-
-            <div>
-              <h1 className="text-2xl font-bold">
-                Developer Hub
-              </h1>
-
-              <p className="text-muted-foreground text-sm">
-                CampusVoice Engineering Portal
-              </p>
-            </div>
-
-          </div>
-
-          <Badge className="rounded-full">
-            v2.4.1
-          </Badge>
-
-        </div>
-      </div>
-
-      <div className="container mx-auto px-6 py-10">
+      <div className="container mx-auto max-w-6xl px-6 py-12">
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: .5 }}
+          transition={{ duration: 0.5 }}
         >
-
-          <Card className="overflow-hidden">
-
+          <Card className="overflow-hidden border">
             <CardContent className="p-10">
 
-              <div className="grid lg:grid-cols-[140px_1fr] gap-8">
+              <div className="grid lg:grid-cols-[260px_1fr] gap-10 items-center">
 
-                {/* Logo */}
+                {/* Left Side */}
 
-                <div className="flex justify-center">
+                <div className="flex flex-col items-center">
 
-                  <div className="w-32 h-32 rounded-full border-2 border-border bg-muted flex items-center justify-center">
+                  {/* Replace this later with your image */}
 
-                    <Rocket className="w-14 h-14 text-primary"/>
+                  <div className="w-48 h-48 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border-4 border-primary/20 flex items-center justify-center">
+
+                    <span className="text-6xl font-bold text-primary">
+                      HG
+                    </span>
 
                   </div>
 
+                  <Badge className="mt-6">
+                    Developer
+                  </Badge>
+
                 </div>
 
-                {/* Content */}
+                {/* Right Side */}
 
                 <div>
 
-                  <Badge
-                    variant="secondary"
-                    className="mb-4"
-                  >
-                    Anonymous Campus Issue Management Platform
-                  </Badge>
+                  <p className="text-primary font-semibold uppercase tracking-wider">
+                    Hello, I'm
+                  </p>
 
-                  <h2 className="text-5xl font-bold mb-4">
+                  <h1 className="text-5xl font-extrabold mt-2">
+                    Hiral Goyal
+                  </h1>
 
-                    CampusVoice
-
+                  <h2 className="text-2xl text-muted-foreground mt-3">
+                    Full-Stack Developer & Founder
                   </h2>
 
-                  <p className="text-lg text-muted-foreground leading-8">
-
-                    CampusVoice was originally developed during a hackathon.
-                    Following the event, the platform was independently
-                    redesigned, expanded and continuously maintained with
-                    significant improvements to its architecture, backend,
-                    security, user experience, scalability and campus ecosystem.
-
+                  <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-3xl">
+                    Passionate about building secure, scalable and impactful
+                    software that solves real problems for students.
+                    I enjoy designing complete products—from UI/UX
+                    to backend architecture, cloud deployment and
+                    application security.
                   </p>
 
                   <div className="flex flex-wrap gap-3 mt-8">
 
-                    <Button>
+                    <Badge variant="secondary">
+                      React
+                    </Badge>
 
-                      <Github className="w-4 h-4 mr-2"/>
+                    <Badge variant="secondary">
+                      Firebase
+                    </Badge>
 
-                      GitHub
+                    <Badge variant="secondary">
+                      TypeScript
+                    </Badge>
 
-                    </Button>
+                    <Badge variant="secondary">
+                      Tailwind CSS
+                    </Badge>
 
-                    <Button
-                      variant="outline"
-                    >
-
-                      <BookOpen className="w-4 h-4 mr-2"/>
-
-                      Documentation
-
-                    </Button>
-
-                    <Button
-                      variant="outline"
-                    >
-
-                      <FileText className="w-4 h-4 mr-2"/>
-
-                      Changelog
-
-                    </Button>
+                    <Badge variant="secondary">
+                      Vercel
+                    </Badge>
 
                   </div>
 
-                  <div className="flex flex-wrap gap-3 mt-8">
+                  <div className="flex flex-wrap gap-6 mt-8 text-muted-foreground">
 
-                    <Badge variant="secondary">
+                    <div className="flex items-center gap-2">
+                      <MapPin size={18} />
+                      Gwalior, India
+                    </div>
 
-                      Stable Release
+                    <div className="flex items-center gap-2">
+                      <GraduationCap size={18} />
+                      Mathematics & Computing
+                    </div>
 
-                    </Badge>
+                  </div>
 
-                    <Badge variant="secondary">
+                  <div className="flex flex-wrap gap-4 mt-10">
 
-                      React
+                    <Button>
+                      <Github className="mr-2 h-4 w-4" />
+                      GitHub
+                    </Button>
 
-                    </Badge>
+                    <Button variant="outline">
+                      <Linkedin className="mr-2 h-4 w-4" />
+                      LinkedIn
+                    </Button>
 
-                    <Badge variant="secondary">
-
-                      Firebase
-
-                    </Badge>
-
-                    <Badge variant="secondary">
-
-                      TypeScript
-
-                    </Badge>
-
-                    <Badge variant="secondary">
-
-                      Vercel
-
-                    </Badge>
-
-                    <Badge variant="secondary">
-
-                      <BadgeCheck className="w-3 h-3 mr-1"/>
-
-                      Production Ready
-
-                    </Badge>
+                    <Button variant="outline">
+                      <Mail className="mr-2 h-4 w-4" />
+                      Contact
+                    </Button>
 
                   </div>
 
@@ -177,13 +132,10 @@ export default function Developer() {
               </div>
 
             </CardContent>
-
           </Card>
-
         </motion.div>
 
       </div>
-
     </div>
   );
 }
